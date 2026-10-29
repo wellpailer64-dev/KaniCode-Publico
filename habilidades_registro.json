@@ -1,0 +1,72 @@
+{
+  "versao": 2,
+  "politica": {
+    "titulo": "Conhecimento do KaniCode",
+    "texto": "O nucleo contem procedimentos genericos revisados. Aprendizados pessoais ficam na pasta de dados. Procedimentos de plugins pertencem ao plugin instalado.",
+    "origem": "Politica de distribuicao do KaniCode",
+    "certeza": "verificado",
+    "agente": "codex"
+  },
+  "ferramentas": {
+    "video_download": {
+      "categoria": "kanicode_vanilla",
+      "programa": "KaniCode",
+      "janela_principal_necessaria": false,
+      "procedimento": "Baixar vídeos/áudios por link com video_download.py baixar --url LINK; consultar info --url LINK. Para leitura, analisar --arquivo VIDEO gera folha com tempos, leitura.md e transcrição Whisper local quando disponível. Começar por leitura.md e folha.jpg; aprofundar com --inicio e --fim em segundos absolutos. --metodo cenas reduz repetições; uniforme distribui amostras. Cache confere conteúdo do vídeo e integridade dos arquivos; --refazer ignora o cache. quadros gera folha sem transcrever por padrão. Resultados no disco D.",
+      "dependencias": [
+        "Python 3.13, yt-dlp, FFmpeg/FFprobe e Pillow já instalados.",
+        "Motor Functions/videodownloader.py no código do KANIVETE; dispensa abrir a janela do aplicativo.",
+        "Transcrição usa Whisper e pesos .pt locais; não instala dependências nem baixa modelos."
+      ],
+      "limites": [
+        "Links privados, expirados ou protegidos podem falhar; link de conversa do WhatsApp não é mídia.",
+        "A folha contém amostras, não todos os frames; só afirmar conteúdo de áudio quando a transcrição estiver concluída."
+      ],
+      "evidencia": "tests/test_video_download.py e tests/test_video_leitura.py",
+      "guia": "VIDEO_DOWNLOAD.md",
+      "origem": "Procedimento do KaniCode validado pelos testes do projeto.",
+      "certeza": "verificado",
+      "agente": "codex"
+    }
+  },
+  "interfaces": {
+    "auto_colab": {
+      "categoria": "kanicode_vanilla",
+      "programa": "KaniCode",
+      "procedimento": "Configurações > Preferências > Auto-Colab ativa ou desativa novas chamadas automáticas. Desligado por padrão. Ligado, o modelo avalia a complexidade e só divide partes independentes: Chamador define contrato, arquivos, formato de entrega e testes; Chamado de outro modelo segue exatamente a tarefa e relata impedimentos. Usar chat acao=colab, de=aba atual, para=auto, texto JSON com acao=iniciar_auto, objetivo, contrato, tarefas [{aba:chamador|chamado,titulo,arquivos}]; no terminal, chat_colab.py --de ID --para auto --acao colab --arquivo JSON_NO_D. Kani/Pickle: chat_colab com para=auto, dados=objeto. Nova aba dedicada, mesma pasta e sem trocar a aba em uso. Ao iniciar a execução, abre o Colab Board, enquadra os participantes e mostra o fio Colab; o novo Chamado fica ao lado do Chamador. Atualizações do diário não reabrem o Board. Chamador integra e valida as duas entregas.",
+      "dependencias": [
+        "KaniCode aberto com canal local; modelos Claude/Codex configurados."
+      ],
+      "limites": [
+        "Uma Colab ativa por aba; Chamado não delega, redefine contrato nem comanda Chamador.",
+        "Claude chama Codex; os demais chamam Claude; quem opcional escolhe claude/codex diferente do Chamador.",
+        "Desligar bloqueia novas chamadas; sessões em andamento continuam. Orientação atualizada nos próximos turnos.",
+        "Reservas são contrato informado ao modelo, sem trava de escrita no disco; reconhecimento da complexidade depende do modelo."
+      ],
+      "guia": "COLAB.md",
+      "evidencia": "tests/test_colab.py e tests/test_colab_ui.py",
+      "origem": "Procedimento do KaniCode validado pelos testes do projeto.",
+      "certeza": "verificado",
+      "agente": "codex"
+    },
+    "painel_projeto": {
+      "categoria": "kanicode_vanilla",
+      "programa": "KaniCode",
+      "procedimento": "Abrir Projeto no topo. O painel acompanha a pasta das operações na aba ativa. Clicar em uma alteração mostra o diff; ± mostra o arquivo inteiro. Editar abre o código; Salvar ou Ctrl+S grava. Em conflito, o rascunho permanece disponível.",
+      "dependencias": [
+        "Janela do KaniCode; Git local para comparação com commits. Pastas sem Git usam referência em memória."
+      ],
+      "limites": [
+        "Atualização a cada três segundos com painel aberto; caminhos precisam aparecer nas operações.",
+        "Editor UTF-8 até 400 KB; não sobrescreve versão externa divergente.",
+        "Ao trocar projeto durante edição, voltar à origem para salvar ou cancelar o rascunho."
+      ],
+      "evidencia": "tests/test_projeto.py e tests/test_projeto_ui.py",
+      "guia": "PROJETO.md",
+      "origem": "Procedimento do KaniCode validado pelos testes do projeto.",
+      "certeza": "verificado",
+      "agente": "codex"
+    }
+  },
+  "camada": "vanilla"
+}

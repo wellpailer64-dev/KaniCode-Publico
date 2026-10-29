@@ -1,0 +1,9 @@
+# segredos e dados deste PC: ficam fora do git
+client_secret*.json
+*.bin
+.env
+# lixo
+__pycache__/
+*.pyc
+build/
+dist/

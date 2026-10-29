@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "camada": "plugin",
+  "interfaces": {
+    "photo:documento novo": {
+      "procedimento": "cria um documento NOVO no Photo numa aba nova (os abertos ficam intactos)",
+      "origem": "Receitas do plugin Kanivete",
+      "certeza": "verificado",
+      "guia": "habilidades_extra.json"
+    },
+    "photo:escrever texto": {
+      "procedimento": "escreve um texto centralizado no documento aberto do Photo",
+      "origem": "Receitas do plugin Kanivete",
+      "certeza": "verificado",
+      "guia": "habilidades_extra.json"
+    },
+    "photo:colocar imagem do arquivo": {
+      "procedimento": "põe uma imagem do disco (ex.: a que baixou) no documento aberto do Photo, ajustada para caber",
+      "origem": "Receitas do plugin Kanivete",
+      "certeza": "verificado",
+      "guia": "habilidades_extra.json"
+    }
+  }
+}

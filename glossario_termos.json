@@ -1,0 +1,87 @@
+{
+  "versao": 1,
+  "origem": "Termos solicitados explicitamente pelo Pailer nesta conversa em 27/10/2026; definições técnicas de referência.",
+  "certeza": "verificado",
+  "agente": "codex",
+  "termos": [
+    {
+      "id": "rag",
+      "termo": "RAG",
+      "definicao": "Retrieval-Augmented Generation: geração apoiada na recuperação de informações relevantes de uma base de conhecimento. No KaniCode, consultar o RAG recupera procedimentos, referências e aprendizados registrados; a recuperação não substitui a verificação da fonte.",
+      "formas": [
+        {
+          "padrao": "\\b(?:rag|rague)\\b",
+          "troca": "RAG"
+        }
+      ],
+      "relacionados": [
+        "grafo",
+        "vertice",
+        "cluster"
+      ]
+    },
+    {
+      "id": "grafo",
+      "termo": "Grafo",
+      "definicao": "Estrutura formada por vértices (nós) e arestas (ligações). Pode representar relações entre registros de conhecimento. Um RAG pode usar um grafo, mas nem todo RAG depende dessa estrutura.",
+      "formas": [
+        {
+          "padrao": "\\bgrafo(s?)\\b",
+          "troca": "grafo\\1"
+        }
+      ],
+      "relacionados": [
+        "vertice",
+        "aresta",
+        "cluster",
+        "rag"
+      ]
+    },
+    {
+      "id": "vertice",
+      "termo": "Vértices",
+      "definicao": "Vértice, ou nó, é uma entidade de um grafo. Na visualização do cérebro do KaniCode, os registros de conhecimento são representados como nós ligados a outros nós.",
+      "formas": [
+        {
+          "padrao": "\\bv[eé]rtice(s?)\\b",
+          "troca": "vértice\\1"
+        }
+      ],
+      "relacionados": [
+        "grafo",
+        "aresta"
+      ]
+    },
+    {
+      "id": "aresta",
+      "termo": "Arestas",
+      "definicao": "Aresta é a ligação entre dois vértices de um grafo. No cérebro do KaniCode, ligações podem ser explícitas ou calculadas por semelhança; uma ligação não comprova a veracidade do conteúdo.",
+      "formas": [
+        {
+          "padrao": "\\baresta(s?)\\b",
+          "troca": "aresta\\1"
+        }
+      ],
+      "relacionados": [
+        "grafo",
+        "vertice"
+      ]
+    },
+    {
+      "id": "cluster",
+      "termo": "Clusters",
+      "definicao": "Cluster é um agrupamento de elementos com características ou relações próximas. Em bases de conhecimento pode agrupar registros por assunto ou similaridade; não é sinônimo de um único vértice.",
+      "formas": [
+        {
+          "padrao": "\\bcl[uú]ster(s?)\\b",
+          "troca": "cluster\\1"
+        }
+      ],
+      "relacionados": [
+        "grafo",
+        "vertice",
+        "rag"
+      ]
+    }
+  ]
+}

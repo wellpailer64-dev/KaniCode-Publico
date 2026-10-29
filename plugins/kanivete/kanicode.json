@@ -1,0 +1,47 @@
+{
+  "nome": "Kanivete",
+  "sigla": "Kv",
+  "cor": "#D4814A",
+  "icone": "icone.png",
+  "cli": "kanivete.py",
+  "descricao": "Ensina o KaniCode a enxergar e comandar o app KANIVETE: portas do modo agente, APIs da página, mapa e guias.",
+  "serve": "O KaniCode é um software independente; o KANIVETE é um dos apps que ele opera. Este plugin junta o que é preciso: saber se o KANIVETE está aberto (9222 = app do Pailer ao vivo, 9333 = app de teste), quais APIs a página expõe (VKN do Vetor, KNV do Photo, SDK do Slider, SKN do Sound, VE3DAPI/LUX_API da Lux, KE_API/VEFILA_API do Encoder, VEMIX_API, VEMO_API, VEPS_API, ATA_API), rodar JS na janela, abrir o app sem fechar nada, e achar no mapa geral e nos guias onde mexer. Regras: no app do Pailer (9222) nada de clique simulado nem recarregar sem o ok dele; testes no 9333 com dados em D:/kanivete_testes.",
+  "comandos": [
+    {
+      "cmd": "estado [--porta P]",
+      "faz": "aberto? portas, páginas e versão"
+    },
+    {
+      "cmd": "apis [--porta P]",
+      "faz": "APIs disponíveis na página agora"
+    },
+    {
+      "cmd": "js \"<código>\" [--porta P]",
+      "faz": "roda JS na janela principal"
+    },
+    {
+      "cmd": "abrir",
+      "faz": "abre em modo agente só se estiver fechado"
+    },
+    {
+      "cmd": "mapa <termo>",
+      "faz": "procura no mapa geral (ferramentas, arquivos, API, testes)"
+    },
+    {
+      "cmd": "guia",
+      "faz": "caminhos dos guias (CLAUDE.md, MAPA.md, modo agente...)"
+    }
+  ],
+  "chamado_por": [
+    "Claude no KaniCode: comando nas instruções enquanto o plugin está ligado",
+    "Kani local: ver_kanivete, abrir_kanivete, abrir_ferramenta, clicar_no_kanivete, usar_habilidade, pedir_ao_kanivete (kani_modo.py, mesma porta 9222)",
+    "Ferramentas do repositório do KANIVETE pelo app aberto: tools/aplicar.py, knv.py, sd.py, vk_cena.py, ke_fila.py, motion_html.py"
+  ],
+  "guia": "kanivete.py guia",
+  "verificar": [
+    "estado",
+    "--curto"
+  ],
+  "prompt": true,
+  "conhecimento": "conhecimento.json"
+}

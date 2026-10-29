@@ -1,0 +1,27 @@
+# Bibliotecas do KaniCode (Python 3.13, Windows). Montar o exe: py -3.13 construir.py
+pywebview==6.2.1
+pythonnet==3.0.5
+pywin32==311
+comtypes==1.4.16
+pycaw==20260927
+psutil==7.2.2
+numpy==2.4.3
+pillow==12.2.0
+onnxruntime==1.31.0
+openwakeword==0.6.0
+onnx-asr==0.12.0
+kokoro-onnx==0.6.1
+tokenizers==0.22.2
+sounddevice==0.5.5
+soundfile==0.14.0
+playwright==1.58.0
+websockets==17.1
+tinytuya==1.20.0
+pywebpush==2.5.0
+py-vapid==1.9.6
+cryptography==50.0.1
+pypdf==6.11.0
+qrcode==8.2
+# só para montar
+pyinstaller==6.19.0
+pyinstaller-hooks-contrib==2026.3

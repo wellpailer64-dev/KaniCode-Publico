@@ -1,0 +1,49 @@
+# Cada envio na main monta o KaniCode.exe e publica uma versão (Releases) com o zip.
+# Versão = versao.txt (maior.menor) + número da execução: 0.1.<n>.
+name: Release do KaniCode
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md", "tests/**", "android/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  montar:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Bibliotecas
+        run: python -m pip install -r requirements.txt
+      - name: Versão
+        id: v
+        shell: pwsh
+        run: |
+          $base = (Get-Content versao.txt -Raw).Trim()
+          $mm = ($base -split '\.')[0..1] -join '.'
+          "versao=$mm.${{ github.run_number }}" >> $env:GITHUB_OUTPUT
+      - name: Montar o exe
+        run: python construir.py --versao ${{ steps.v.outputs.versao }} --zip
+      - name: Conferir que abre como Python
+        shell: pwsh
+        run: |
+          $r = & dist\KaniCode\KaniCode.exe -c "import sys, webview, onnxruntime, numpy; print('ok', sys.version)" | Out-String
+          Write-Host $r
+          if ($r -notmatch 'ok') { exit 1 }
+      - name: Instalador completo para download direto
+        shell: pwsh
+        run: |
+          $v = "${{ steps.v.outputs.versao }}"
+          python construir_instalador.py --pacote "dist/KaniCode-$v.zip" --versao "$v"
+          Copy-Item -LiteralPath "dist/KaniCode-$v-Setup.exe" -Destination "dist/KaniCode-Setup.exe"
+      - name: Publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $v = "${{ steps.v.outputs.versao }}"
+          gh release create "v$v" "dist\KaniCode-$v.zip" "dist\KaniCode-Setup.exe" --title "KaniCode $v" --notes "Montado de ${{ github.sha }}. Baixar o zip, extrair e abrir KaniCode.exe."
